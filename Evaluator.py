@@ -74,9 +74,9 @@ class Evaluator:
                         if iou > 0.5:
                             paired_iou_list = paired_iou_list + [iou]
                             if s['category'] not in category_dict.keys():
-                                category_dict[s['category']] = [paired_iou_list]
+                                category_dict[s['category']] = [iou]
                             else:
-                                category_dict[s['category']] = category_dict[s['category']] + [paired_iou_list]
+                                category_dict[s['category']] = category_dict[s['category']] + [iou]
             if len(paired_iou_list) != 0:
                 iou_mean = float(np.array(paired_iou_list).mean())
             else:
