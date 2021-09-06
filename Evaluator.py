@@ -62,6 +62,7 @@ class Evaluator:
             self.result = self.result + [res]
 
         elif "BOX2D" in input_source.keys() and "BOX2D" in input_target.keys():
+            self.cnt = self.cnt + 0.5
             category_dict = dict()
             paired_iou_list = []
             source_list = input_source['BOX2D']
