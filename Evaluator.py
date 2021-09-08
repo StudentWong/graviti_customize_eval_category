@@ -86,7 +86,7 @@ class Evaluator:
             for k in category_dict.keys():
                 iou_mean_item = float(np.array(category_dict[k]).mean())
                 ratio = np.tan(iou_mean_item)
-                y = self.x * ratio
+                y = (self.x * self.x) * np.exp(ratio) + np.log(ratio) * self.x + ratio
 
                 d_item[k] = {
                         'float_file_metric': self.cnt,
@@ -98,7 +98,7 @@ class Evaluator:
                         }
 
             ratio = np.tan(iou_mean)
-            y = self.x * ratio
+            y = (self.x * self.x) * np.exp(ratio) + np.log(ratio) * self.x + ratio
 
             dict_ret = {
                     'overall': {
@@ -123,6 +123,8 @@ class Evaluator:
         self.cnt = self.cnt + 0.5
         ratio = np.tan(self.cnt)
         y = self.x * ratio
+        yy = self.x * self.x + ratio * self.x
+        yyy = ratio * self.x * self.x + self.x
         dict_ret = {
             'overall': {
                     'customized_iou': r_float,
@@ -138,7 +140,7 @@ class Evaluator:
                     'float_file_metric': 1.1,
                     'curve_file_metric': {
                         'x': self.x.tolist(),
-                        'y': (2*y).tolist()
+                        'y': yy.tolist()
                     }
                 },
                 'bike': {
@@ -146,7 +148,7 @@ class Evaluator:
                     'float_file_metric': 2.2,
                     'curve_file_metric': {
                         'x': self.x.tolist(),
-                        'y': (3 * y).tolist()
+                        'y': yyy.tolist()
                     }
                 }
             }
