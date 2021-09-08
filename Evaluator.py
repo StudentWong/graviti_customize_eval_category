@@ -150,6 +150,14 @@ class Evaluator:
                         'x': self.x.tolist(),
                         'y': yyy.tolist()
                     }
+                },
+                'bicycle': {
+                    'customized_iou': 2,
+                    'float_file_metric': 2.2,
+                    'curve_file_metric': {
+                        'x': self.x.tolist(),
+                        'y': yyy.tolist()
+                    }
                 }
             }
         }
