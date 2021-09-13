@@ -124,7 +124,10 @@ class Evaluator:
 
     def get_result(self) -> dict:
         r = np.array(self.result)
-        r_float = float(r.mean())
+        if len(r) != 0:
+            r_float = float(r.mean())
+        else:
+            r_float=0
         self.cnt = self.cnt + 0.5
         ratio = np.tan(self.cnt)
         y = self.x * ratio
