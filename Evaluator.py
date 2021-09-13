@@ -42,7 +42,8 @@ class Evaluator:
     def evaluate_one_data(self, input_source: dict, input_target: dict) -> dict:
 
         if "CLASSIFICATION" in input_source.keys() and "CLASSIFICATION" in input_target.keys():
-            if input_source["CLASSIFICATION"]['attributes']['traffic'] == input_target["CLASSIFICATION"]['attributes']['traffic']:
+           # if input_source["CLASSIFICATION"]['attributes']['traffic'] == input_target["CLASSIFICATION"]['attributes']['traffic']:
+            if True:
                 res = 1
             else:
                 res = -1
@@ -133,33 +134,7 @@ class Evaluator:
                         'x': self.x.tolist(),
                         'y': y.tolist()
                     }
-                },
-            "categories": {
-                'bus': {
-                    'customized_iou': 1,
-                    'float_file_metric': 1.1,
-                    'curve_file_metric': {
-                        'x': self.x.tolist(),
-                        'y': yy.tolist()
-                    }
-                },
-                'bike': {
-                    'customized_iou': 2,
-                    'float_file_metric': 2.2,
-                    'curve_file_metric': {
-                        'x': self.x.tolist(),
-                        'y': yyy.tolist()
-                    }
-                },
-                'bicycle': {
-                    'customized_iou': 2,
-                    'float_file_metric': 2.2,
-                    'curve_file_metric': {
-                        'x': self.x.tolist(),
-                        'y': yyy.tolist()
-                    }
                 }
-            }
         }
         return dict_ret
 
