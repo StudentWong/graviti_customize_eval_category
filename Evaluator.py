@@ -43,12 +43,16 @@ class Evaluator:
 
         if "CLASSIFICATION" in input_source.keys() and "CLASSIFICATION" in input_target.keys():
            # if input_source["CLASSIFICATION"]['attributes']['traffic'] == input_target["CLASSIFICATION"]['attributes']['traffic']:
-            if True:
-                res = 1
-            else:
-                res = -1
-            ratio = np.tan(res)
-            y = self.x * ratio
+            source_list = input_source['CLASSIFICATION']
+            target_list = input_target['CLASSIFICATION']
+            for s in source_list:
+                for t in target_list:
+                    if s['category'] == t['category']:
+                        res = 1
+                    else:
+                        res = -1
+                    ratio = np.tan(res)
+                    y = self.x * ratio
 
             dict_ret = {
                 'overall': {
