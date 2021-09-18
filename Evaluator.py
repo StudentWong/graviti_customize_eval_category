@@ -47,10 +47,11 @@ class Evaluator:
             target_list = input_target['CLASSIFICATION']
             for s in source_list:
                 for t in target_list:
-                    if s['category'] == t['category']:
-                        res = 1
-                    else:
-                        res = -1
+#                     if s['category'] == t['category']:
+#                         res = 1
+#                     else:
+#                         res = -1
+                    res=-1
                     ratio = np.tan(res)
                     y = self.x * ratio
 
